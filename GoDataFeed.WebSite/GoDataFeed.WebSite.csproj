@@ -130,6 +130,7 @@
     <Compile Include="App_Start\GDFBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GDFApiController.cs" />
     <Compile Include="Controllers\GDFHomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
