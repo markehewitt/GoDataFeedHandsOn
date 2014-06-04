@@ -1,0 +1,27 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/GDFStyles.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+</head>
+    <body>
+        <div class="gdf-banner">
+            <div class="pull-left hide-sm">
+                <img src="~/Images/GoDataFeed.png" alt="The best company in the world" />
+            </div>
+        </div>
+        <div class="mainbody-div">
+            @RenderBody() 
+        </div>
+    
+      
+
+    </body>
+</html>

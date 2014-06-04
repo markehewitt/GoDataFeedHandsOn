@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Default Page";
+}
+
+<!DOCTYPE html>
+
+@*<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Default</title>
+</head>
+<body>
+    <div> 
+    </div>
+</body>
+</html>*@
+
+<section></section>
+
+<div>
+    Hi Mark
+</div>
+
+Modernizr Says: <div id="ModerizrResults" ></div>
+
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        if (Modernizr.audio) {
+            $('#ModerizrResults').append('Audio is Supported').addClass('go');
+        } else {
+            $('#ModerizrResults').append('Audio is Not Supported').addClass('stop');
+        }
+    });
+
+</script>
