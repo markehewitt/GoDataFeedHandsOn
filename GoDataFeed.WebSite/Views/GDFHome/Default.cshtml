@@ -21,15 +21,16 @@
     Hi Mark
 </div>
 
-Modernizr Says: <div id="ModerizrResults" ></div>
+<div id="ModerizrResults" ></div>
 
 <script type="text/javascript">
     
     $(document).ready(function () {
         if (Modernizr.audio) {
-            $('#ModerizrResults').append('Audio is Supported').addClass('go');
+            var audioControl = '<audio src="http://localhost:51502/Content/Kalimba.mp3" autoplay="autoplay" controls="controls" />';
+            $('#ModerizrResults').addClass('go').append('Modernizr knows you can handle the music<br/>').append(audioControl);
         } else {
-            $('#ModerizrResults').append('Audio is Not Supported').addClass('stop');
+            $('#ModerizrResults').addClass('stop').append('Sorry, Modernizer says audio is Not Supported');
         }
     });
 

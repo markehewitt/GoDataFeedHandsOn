@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\GDFStyles.css" />
+    <Content Include="Content\Kalimba.mp3" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Images\GoDataFeed.png" />
