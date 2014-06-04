@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoDataFeed.Dal", "GoDataFeed.Dal\GoDataFeed.Dal.csproj", "{84B019DE-F965-43FA-B544-190688122BCB}"
 EndProject
@@ -10,6 +10,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{93F56266-C795-41E6-80B1-8EACD41C238F}"
 	ProjectSection(SolutionItems) = preProject
 		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Scripts", "Database Scripts", "{F69AE94A-A747-48AB-952D-072C860F6A01}"
+	ProjectSection(SolutionItems) = preProject
+		Database Scripts\create product table.sql = Database Scripts\create product table.sql
+		Database Scripts\create retailer table.sql = Database Scripts\create retailer table.sql
 	EndProjectSection
 EndProject
 Global

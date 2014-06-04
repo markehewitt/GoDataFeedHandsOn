@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace GoDataFeed.WebSite.Controllers
 {
-    public class GDFApiController : ApiController
+    public class GDFApiProductController : ApiController
     {
     }
 }
