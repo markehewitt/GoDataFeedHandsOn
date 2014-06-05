@@ -5,7 +5,7 @@
 
 function CallWebAPI() {
     //var uri = '/api/GDFApiRetail/GetRetailer/3';
-    var uri = '/api/GDFApiRetail/Get/3';
+    var uri = '/api/GDFApiRetail/GetViaEf/3';
     $.getJSON(uri).done(
         function (data) {
             debugger;

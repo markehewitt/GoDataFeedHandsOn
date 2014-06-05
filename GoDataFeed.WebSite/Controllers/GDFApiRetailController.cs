@@ -11,12 +11,14 @@ namespace GoDataFeed.WebSite.Controllers
 {
     public class GDFApiRetailController : ApiController
     {
+        private RetailerEfService efSvc = new RetailerEfService();
 
         [HttpGet]
-        public Retailer Get(long id)
+        public Retailer GetViaEf(long id)
         {
-            var dalRetailer = new Retailer();
-            return dalRetailer.Get(id);
+            return efSvc.Get(id);
+            //var dalRetailer = new Retailer();
+            //return dalRetailer.Get(id);
         }
 
         [HttpGet]

@@ -6,7 +6,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
 using GoDataFeed.WebSite.App_Start;
-using GoDataFeed.WebSite.Models;
+
+using GoDataFeed.Dal;
 
 namespace GoDataFeed.WebSite
 {

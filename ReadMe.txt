@@ -6,6 +6,7 @@ http://www.godatafeed.com/
 This demo attempts to demonstrate the following coding principles:
 1) Creating the WebSite from an Empty template
 2) Use WebApi routing variations to expose more methods in same controller
+3) Debugging - VStudio, JavaScript, Fiddler and SQL
 
 JQuery
 JQuery.UI

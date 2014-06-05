@@ -9,7 +9,6 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using GoDataFeed.Dal;
-using GoDataFeed.WebSite.Models;
 
 namespace GoDataFeed.WebSite.Controllers
 {
@@ -18,6 +17,7 @@ namespace GoDataFeed.WebSite.Controllers
         private RetailerContext db = new RetailerContext();
 
         // GET: api/retailers
+        // GET: api/retailers/Getretailers
         public IQueryable<Retailer> Getretailers()
         {
             return db.Retailers;

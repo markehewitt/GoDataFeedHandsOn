@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GoDataFeed.Dal
 {
-    [Table("Retailer")]
+    [Table("dbo.retailer")]
     public class Retailer 
     {
         public long id { get; set; }
@@ -24,4 +25,12 @@ namespace GoDataFeed.Dal
         }
 
     }
+
+    public class RetailerContext : DbContext
+    {
+        public RetailerContext() : base("name=GoDataFeedDbConnection") {}
+
+        public DbSet<Retailer> Retailers { get; set; }
+    }
+
 }
