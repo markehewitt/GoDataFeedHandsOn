@@ -15,19 +15,19 @@ namespace GoDataFeed.WebSite.Controllers
 {
     public class retailersController : ApiController
     {
-        private GoDataFeedWebSiteContext db = new GoDataFeedWebSiteContext();
+        private RetailerContext db = new RetailerContext();
 
         // GET: api/retailers
-        public IQueryable<retailer> Getretailers()
+        public IQueryable<Retailer> Getretailers()
         {
-            return db.retailers;
+            return db.Retailers;
         }
 
         // GET: api/retailers/5
-        [ResponseType(typeof(retailer))]
+        [ResponseType(typeof(Retailer))]
         public IHttpActionResult Getretailer(long id)
         {
-            retailer retailer = db.retailers.Find(id);
+            Retailer retailer = db.Retailers.Find(id);
             if (retailer == null)
             {
                 return NotFound();
@@ -38,7 +38,7 @@ namespace GoDataFeed.WebSite.Controllers
 
         // PUT: api/retailers/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult Putretailer(long id, retailer retailer)
+        public IHttpActionResult Putretailer(long id, Retailer retailer)
         {
             if (!ModelState.IsValid)
             {
@@ -72,31 +72,31 @@ namespace GoDataFeed.WebSite.Controllers
         }
 
         // POST: api/retailers
-        [ResponseType(typeof(retailer))]
-        public IHttpActionResult Postretailer(retailer retailer)
+        [ResponseType(typeof(Retailer))]
+        public IHttpActionResult Postretailer(Retailer retailer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.retailers.Add(retailer);
+            db.Retailers.Add(retailer);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = retailer.id }, retailer);
         }
 
         // DELETE: api/retailers/5
-        [ResponseType(typeof(retailer))]
+        [ResponseType(typeof(Retailer))]
         public IHttpActionResult Deleteretailer(long id)
         {
-            retailer retailer = db.retailers.Find(id);
+            Retailer retailer = db.Retailers.Find(id);
             if (retailer == null)
             {
                 return NotFound();
             }
 
-            db.retailers.Remove(retailer);
+            db.Retailers.Remove(retailer);
             db.SaveChanges();
 
             return Ok(retailer);
@@ -113,7 +113,7 @@ namespace GoDataFeed.WebSite.Controllers
 
         private bool retailerExists(long id)
         {
-            return db.retailers.Count(e => e.id == id) > 0;
+            return db.Retailers.Count(e => e.id == id) > 0;
         }
     }
 }

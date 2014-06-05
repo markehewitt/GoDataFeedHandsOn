@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GoDataFeed.Dal
 {
-    public class retailer
+    [Table("Retailer")]
+    public class Retailer 
     {
         public long id { get; set; }
         public string name { get; set; }
+        public IQueryable<Product> Products;
 
-        public IEnumerable<product> products;
-
-        public retailer Get(long id)
+        public Retailer Get(long id)
         {
-            return new retailer
+            return new Retailer
             {
                 id = 3,
                 name = "cool beans"

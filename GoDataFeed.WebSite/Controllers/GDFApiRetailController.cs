@@ -13,9 +13,16 @@ namespace GoDataFeed.WebSite.Controllers
     {
 
         [HttpGet]
-        public retailer GetRetailer(long id)
+        public Retailer Get(long id)
         {
-            var dalRetailer = new retailer();
+            var dalRetailer = new Retailer();
+            return dalRetailer.Get(id);
+        }
+
+        [HttpGet]
+        public Retailer GetRetailer(long id)
+        {
+            var dalRetailer = new Retailer();
             return dalRetailer.Get(id);
         }
     }

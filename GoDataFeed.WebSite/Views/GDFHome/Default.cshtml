@@ -37,22 +37,10 @@ http://www.w3schools.com/tags/tag_audio.asp
             $('#ModerizrResults').addClass('stop').append('Sorry, Modernizer says audio is Not Supported');
         }
 
+        debugger;
         CallWebAPI();
     });
 
-    function CallWebAPI() {
-        var uri = '/api/GDFApi/3';
-        $.getJSON(uri).done(
-            function (data) {
-                debugger;
-                alert('ff');
-            }
-            ).fail(
-                function (jqXHR, textStatus, err) {
-                    debugger;
-                    alert('yy');
-                }
-            );
-    }
+
 
 </script>

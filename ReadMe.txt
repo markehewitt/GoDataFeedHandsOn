@@ -5,22 +5,38 @@ http://www.godatafeed.com/
 
 This demo attempts to demonstrate the following coding principles:
 1) Creating the WebSite from an Empty template
-2) 
+2) Use WebApi routing variations to expose more methods in same controller
 
 JQuery
 JQuery.UI
+	http://jqueryui.com/tabs/
 Modernizr
 	http://modernizr.com/
 	http://modernizr.com/docs/#features-css
 Google Analytics
 Elmah Exception Handling
 
+http://csharp-video-tutorials.blogspot.com/
+
 KnockoutJS
 AngularJS
 	http://www.toptal.com/angular-js/a-step-by-step-guide-to-your-first-angularjs-app
 
+handlebars.js is used to convert json to html
 
-Handlebar.js with Mustache?
+<connectionStrings>
+	<add name="EmployeeContext"
+		connectionString="server=.; database=Sample; integrated security=SSPI"
+		providerName="System.Data.SqlClient" />
+</connectionStrings>
+
+Code First Migrations
+	http://msdn.microsoft.com/en-us/data/jj591621.aspx
+
+Handlebar.js with Mustache? - it uses tile templates.
+	http://www.slideshare.net/DanWahlin/building-the-an-endtoend-aspnet-mvc-4-entity-framework-html5-jquery-application
+
+what are application templates
 
 Bootstrap 3+
 Media Queries

@@ -115,6 +115,7 @@
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Images\GoDataFeed.png" />
+    <Content Include="Scripts\GoDataFeed.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
@@ -139,7 +140,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\GoDataFeedWebSiteContext.cs" />
+    <Compile Include="Models\ProductContext.cs" />
+    <Compile Include="Models\RetailerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
