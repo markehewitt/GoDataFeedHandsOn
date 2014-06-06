@@ -1,16 +1,11 @@
 ﻿@{
     ViewBag.Title = "GoDataFeed Demo";
 }
-
-@*<!DOCTYPE html>*@
-
 <div id="tabs">
     <ul>
         <li><a href="#tabs-1">Modernizr</a></li>
-        <li><a href="#tabs-2">Enity Framework</a></li>
-        <li><a href="#tabs-3">Dapper</a></li>
-        @*  knockout, googles mvc js, elmah logging partial, google analytics
-        *@
+        <li><a href="#tabs-2">Entity Framework</a></li>
+        <li><a href="#tabs-3">Dapper/knockoutJS</a></li>
     </ul>
     <div id="tabs-1">
         <p>@Html.Partial("~/Views/GDFMvc/_partialModernizr.cshtml")</p>
@@ -21,7 +16,6 @@
     <div id="tabs-3">
         <p>@Html.Partial("~/Views/GDFMvc/_partialDapper.cshtml")</p>
     </div>
-
 </div>
 
 <script type="text/javascript">

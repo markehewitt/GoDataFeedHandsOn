@@ -1,1 +1,28 @@
-﻿ef partial
+﻿Pull the list of Retailers via Entity Framework and WebAPI
+
+<p><button onclick="javascript:CallEntityFramework()" name="Get Retailers">Get Retailers via Entity Framework</button></p>
+
+<div id="results">
+    hi all
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#results").hide();
+    });
+
+    function CallEntityFramework() {
+        var uri = '/api/GDFApi/GetAllRetailers';
+        $.getJSON(uri).done(
+            function (data) {
+
+                $("#results").show("explode", 1500);
+            }
+            ).fail(
+                function (jqXHR, textStatus, err) {
+                    alert(err);
+                }
+            );
+    }
+</script>

@@ -1,25 +1,50 @@
-﻿
-Pull the list of Retailers via Dapper Simple example of Modernizr to check if HTML5 Audio tag is supported
-<br/>
-<button onclick="javascript:CallWebAPI()" name="Get Retailers">dddd</button>
+﻿Pull the list of Retailers via Dapper and WebAPI and bind to a table using knockoutJS
+
+<p><button onclick="javascript:CallDapper()" name="Get Retailers">Get Retailers via Dapper</button></p>
+
+<div id="results">
+    <p>The query returned <span data-bind="text: retailers().length">&nbsp;</span> retailers(s)</p>
+    <table>
+        <thead>
+            <tr>
+                <th width="50px" align="left">Id</th>
+                <th width="300px" align="left">Name</th>
+                <th width="500px" align="left">Description</th>
+            </tr>
+        </thead>
+        <tbody data-bind="template: { name: 'retailerRowTemplate', foreach: retailers }"></tbody>
+    </table>
+    <p><i>Note the jQuery UI Show effect</i></p>
+</div>
+
+<script type="text/html" id="retailerRowTemplate">
+    <tr>
+        <td width="50px"><span data-bind="text: id"></span></td>
+        <td width="300px"><span data-bind="text: name"></span></td>
+        <td width="500px"><span data-bind="text: description"></span></td>
+    </tr>
+</script>
 
 <script type="text/javascript">
-    function CallWebAPI() {
+
+    $(document).ready(function () {
+        $("#results").hide();
+    });
+
+    function CallDapper() {
         var uri = '/api/GDFApi/GetAllRetailersViaDapper';
-
-
-
         $.getJSON(uri).done(
             function (data) {
-                debugger;
-                alert('sucess calling ' + uri);
+                var viewModel = {
+                    retailers: ko.observableArray(data)
+                };
+                ko.applyBindings(viewModel, document.body);
+                $("#results").show("slide", 1500);
             }
             ).fail(
                 function (jqXHR, textStatus, err) {
-                    debugger;
                     alert(err);
                 }
             );
     }
-
 </script>
