@@ -8,6 +8,9 @@ This demo attempts to demonstrate the following coding principles:
 2) Use WebApi routing variations to expose more methods in same controller
 3) Debugging - VStudio, JavaScript, Fiddler and SQL
 
+jquery plug-in
+jquery validation
+
 JQuery
 JQuery.UI
 	http://jqueryui.com/tabs/

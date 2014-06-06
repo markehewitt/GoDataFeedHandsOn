@@ -1,23 +1,67 @@
-﻿Pull the list of Retailers via Entity Framework and WebAPI
+﻿Pull the list of Retailers via Entity Framework and WebAPI using handlebars.js
 
-<p><button onclick="javascript:CallEntityFramework()" name="Get Retailers">Get Retailers via Entity Framework</button></p>
+<p><button class="button" onclick="javascript:CallEntityFramework()" name="Get Retailers">Get Retailers via Entity Framework</button></p>
 
-<div id="results">
+<div id="efResults">
     hi all
 </div>
+
+<script id="retailers-table" type="text/x-handlebars-template">
+    <table>
+        <thead>
+            <tr>
+                <th width="50px" align="left">Id</th>
+                <th width="250px" align="left">Name</th>
+                <th width="400px" align="left">Description</th>
+                <th width="75px" align="left">Edit</th>
+                <th width="75px" align="left">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this}}
+            <tr>
+                <td width="50px">{{id}}</td>
+                <td width="250px">{{name}}</td>
+                <td width="400px">{{description}}</td>
+                <td width="75px"><a href="#" class="edit-retailer" data-id="{{id}}">Edit</a></td>
+                <td width="75px"><a href="#" class="delete-retailer" data-id="{{id}}">Delete</a></td>
+            </tr>
+            {{/each}}
+            <tr>
+                <td colspan="5"><a href="#" class="add-retailer">Add</a></td>
+            </tr>
+        </tbody>
+    </table>
+</script> 
 
 <script type="text/javascript">
 
     $(document).ready(function () {
-        $("#results").hide();
+        $("#efResults").hide();
+
+    });
+
+    $('body').on('click', '.edit-retailer', function () {
+        debugger;
+        var link = $(this);
+        alert('edit' + link.data('id'));
+    }).on('click', '.delete-retailer', function () {
+        var link = $(this);
+        alert('delete' + link.data('id'));
+    }).on('click', '.add-retailer', function () {
+        alert('add');
     });
 
     function CallEntityFramework() {
         var uri = '/api/GDFApi/GetAllRetailers';
         $.getJSON(uri).done(
-            function (data) {
-
-                $("#results").show("explode", 1500);
+            function (data) { 
+                debugger;
+                var source = $("#retailers-table").html();
+                var template = Handlebars.compile(source);  // Compile HandleBar template
+                var html = template(data);  // Pass returned json data to handlebar template
+                $("#efResults").html(html);
+                $("#efResults").show("explode", 1500);
             }
             ).fail(
                 function (jqXHR, textStatus, err) {

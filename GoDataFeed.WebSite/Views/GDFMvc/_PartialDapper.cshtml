@@ -1,8 +1,8 @@
 ﻿Pull the list of Retailers via Dapper and WebAPI and bind to a table using knockoutJS
 
-<p><button onclick="javascript:CallDapper()" name="Get Retailers">Get Retailers via Dapper</button></p>
+<p><button class="button" onclick="javascript:CallDapper()" name="Get Retailers">Get Retailers via Dapper</button></p>
 
-<div id="results">
+<div id="dapResults">
     <p>The query returned <span data-bind="text: retailers().length">&nbsp;</span> retailers(s)</p>
     <table>
         <thead>
@@ -28,7 +28,7 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        $("#results").hide();
+        $("#dapResults").hide();
     });
 
     function CallDapper() {
@@ -39,7 +39,7 @@
                     retailers: ko.observableArray(data)
                 };
                 ko.applyBindings(viewModel, document.body);
-                $("#results").show("slide", 1500);
+                $("#dapResults").show("slide", 1500);
             }
             ).fail(
                 function (jqXHR, textStatus, err) {
