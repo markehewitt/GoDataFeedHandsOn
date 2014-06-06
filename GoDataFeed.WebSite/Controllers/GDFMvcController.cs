@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace GoDataFeed.WebSite.Controllers
 {
-    public class GDFHomeController : Controller
+    public class GDFMvcController : Controller
     {
         //
-        // GET: /GDFHome/
+        // GET: /GDFMvc/
         public ActionResult Default()
         {
             return View();

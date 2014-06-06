@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,26 +10,14 @@ namespace GoDataFeed.Dal
     [Table("dbo.retailer")]
     public class Retailer 
     {
-        public long id { get; set; }
-        public string name { get; set; }
-        public IQueryable<Product> Products;
-
-        public Retailer Get(long id)
+        public Retailer()
         {
-            return new Retailer
-            {
-                id = 3,
-                name = "cool beans"
-            };
+            this.Products = new HashSet<Product>();
         }
 
-    }
-
-    public class RetailerContext : DbContext
-    {
-        public RetailerContext() : base("name=GoDataFeedDbConnection") {}
-
-        public DbSet<Retailer> Retailers { get; set; }
+        public long id { get; set; }
+        public string name { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 
 }

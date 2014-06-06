@@ -22,11 +22,8 @@ namespace GoDataFeed.WebSite
             GDFBundleConfig.RegisterBundles(BundleTable.Bundles);
 
             // The database tables already exist
-            var productStrategy = new System.Data.Entity.NullDatabaseInitializer<ProductContext>();
-            Database.SetInitializer<ProductContext>(productStrategy);
-
-            var retailerStrategy = new System.Data.Entity.NullDatabaseInitializer<RetailerContext>();
-            Database.SetInitializer<RetailerContext>(retailerStrategy);
+            var strategy = new System.Data.Entity.NullDatabaseInitializer<GoDataFeedContext>();
+            Database.SetInitializer<GoDataFeedContext>(strategy);
 
         }
     }

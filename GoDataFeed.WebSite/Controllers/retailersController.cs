@@ -14,7 +14,7 @@ namespace GoDataFeed.WebSite.Controllers
 {
     public class retailersController : ApiController
     {
-        private RetailerContext db = new RetailerContext();
+        private GoDataFeedContext db = new GoDataFeedContext();
 
         // GET: api/retailers
         // GET: api/retailers/Getretailers

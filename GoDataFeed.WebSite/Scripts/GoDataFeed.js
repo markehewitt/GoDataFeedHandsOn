@@ -4,8 +4,13 @@
 
 
 function CallWebAPI() {
-    //var uri = '/api/GDFApiRetail/GetRetailer/3';
-    var uri = '/api/GDFApiRetail/GetViaEf/3';
+    //var uri = '/api/GDFApi/GetRetailer/3';
+    //var uri = '/api/GDFApi/GetAllRetailers';
+    //var uri = '/api/GDFApi/GetRetailerViaDapper/3';
+    var uri = '/api/GDFApi/GetAllRetailersViaDapper';
+    
+
+    
     $.getJSON(uri).done(
         function (data) {
             debugger;

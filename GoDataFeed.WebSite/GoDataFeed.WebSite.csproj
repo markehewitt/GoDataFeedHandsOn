@@ -127,15 +127,14 @@
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_GDF_Layout.cshtml" />
-    <Content Include="Views\GDFHome\Default.cshtml" />
+    <Content Include="Views\GDFMvc\Default.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\GDFBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\GDFApiProductController.cs" />
-    <Compile Include="Controllers\GDFApiRetailController.cs" />
-    <Compile Include="Controllers\GDFHomeController.cs" />
+    <Compile Include="Controllers\GDFApiController.cs" />
+    <Compile Include="Controllers\GDFMvcController.cs" />
     <Compile Include="Controllers\retailersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -16,7 +16,7 @@ namespace GoDataFeed.WebSite
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "GDFHome", action = "Default", id = UrlParameter.Optional }
+                defaults: new { controller = "GDFMvc", action = "Default", id = UrlParameter.Optional }
             );
         }
     }
