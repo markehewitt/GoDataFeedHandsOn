@@ -22,4 +22,18 @@ function CallWebAPI() {
                 alert(err);
             }
         );
+
+    $.ajax({
+        type: "POST",
+        url: Person.SaveUrl,
+        data: ko.toJSON(Person.ViewModel),
+        contentType: 'application/json',
+        async: true,
+        success: function (result) {
+            // Handle the response here.
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            // Handle error.
+        }
+    });
 }

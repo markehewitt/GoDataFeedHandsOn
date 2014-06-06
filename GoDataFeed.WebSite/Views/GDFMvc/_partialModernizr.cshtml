@@ -1,0 +1,16 @@
+﻿Simple example of Modernizr to check if HTML5 Audio tag is supported
+
+<div id="ModerizrResults"></div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        if (Modernizr.audio) {
+            var audioControl = '<audio src="http://localhost:51502/Content/Kalimba.mp3" autoplay="autoplay" controls="controls" />';
+            $('#ModerizrResults').addClass('go').append('Modernizr knows you can handle the music<br/>').append(audioControl);
+        } else {
+            $('#ModerizrResults').addClass('stop').append('Sorry, Modernizer says audio is Not Supported');
+        }
+    });
+
+</script>

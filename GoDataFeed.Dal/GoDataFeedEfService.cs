@@ -21,23 +21,25 @@ namespace GoDataFeed.Dal
             return db.Retailers;
         }
 
-        public void AddRetailer(long id, string name)
+        public void AddRetailer(long id, string name, string description)
         {
             var retailer = new Retailer
             {
                 id = id,
-                name = name
+                name = name,
+                description = description
             };
 
             db.Retailers.Add(retailer);
             db.SaveChanges();
         }
 
-        public void UpdateRetailer(long id, string name)
+        public void UpdateRetailer(long id, string name, string description)
         {
             var entity = db.Retailers.Find(id);
             var entry = db.Entry<Retailer>(entity);
             entity.name = name;
+            entity.description = description;
             entry.State = EntityState.Modified;
             db.SaveChanges();
         }

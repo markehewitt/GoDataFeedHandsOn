@@ -1,46 +1,31 @@
 ﻿@{
-    ViewBag.Title = "Default Page";
+    ViewBag.Title = "GoDataFeed Demo";
 }
 
-<!DOCTYPE html>
+@*<!DOCTYPE html>*@
 
-@*<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Default</title>
-</head>
-<body>
-    <div> 
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">Modernizr</a></li>
+        <li><a href="#tabs-2">Enity Framework</a></li>
+        <li><a href="#tabs-3">Dapper</a></li>
+        @*  knockout, googles mvc js, elmah logging partial, google analytics
+        *@
+    </ul>
+    <div id="tabs-1">
+        <p>@Html.Partial("~/Views/GDFMvc/_partialModernizr.cshtml")</p>
     </div>
-</body>
-</html>*@
+    <div id="tabs-2">
+        <p>@Html.Partial("~/Views/GDFMvc/_partialEntityFramework.cshtml")</p>
+    </div>
+    <div id="tabs-3">
+        <p>@Html.Partial("~/Views/GDFMvc/_partialDapper.cshtml")</p>
+    </div>
 
-http://www.w3schools.com/tags/tag_audio.asp
-
-<section></section>
-
-<div>
-    Hi Mark
 </div>
 
-<div id="ModerizrResults" ></div>
-
-<p id="retailer" />
-
 <script type="text/javascript">
-    
     $(document).ready(function () {
-        //if (Modernizr.audio) {
-        //    var audioControl = '<audio src="http://localhost:51502/Content/Kalimba.mp3" autoplay="autoplay" controls="controls" />';
-        //    $('#ModerizrResults').addClass('go').append('Modernizr knows you can handle the music<br/>').append(audioControl);
-        //} else {
-        //    $('#ModerizrResults').addClass('stop').append('Sorry, Modernizer says audio is Not Supported');
-        //}
-
-        debugger;
-        CallWebAPI();
+        $("#tabs").tabs();
     });
-
-
-
 </script>

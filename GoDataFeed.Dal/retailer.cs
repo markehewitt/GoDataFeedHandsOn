@@ -17,6 +17,7 @@ namespace GoDataFeed.Dal
 
         public long id { get; set; }
         public string name { get; set; }
+        public string description { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
 

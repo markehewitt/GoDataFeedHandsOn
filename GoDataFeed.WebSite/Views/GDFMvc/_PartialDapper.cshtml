@@ -1,0 +1,25 @@
+﻿
+Pull the list of Retailers via Dapper Simple example of Modernizr to check if HTML5 Audio tag is supported
+<br/>
+<button onclick="javascript:CallWebAPI()" name="Get Retailers">dddd</button>
+
+<script type="text/javascript">
+    function CallWebAPI() {
+        var uri = '/api/GDFApi/GetAllRetailersViaDapper';
+
+
+
+        $.getJSON(uri).done(
+            function (data) {
+                debugger;
+                alert('sucess calling ' + uri);
+            }
+            ).fail(
+                function (jqXHR, textStatus, err) {
+                    debugger;
+                    alert(err);
+                }
+            );
+    }
+
+</script>
