@@ -29,7 +29,7 @@ namespace GoDataFeed.WebSite.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult AddRetailer([FromBody]Retailer retailer)  //string name, string description
+        public IHttpActionResult AddRetailer([FromBody]Retailer retailer) 
         {
             efSvc.AddRetailer(retailer.name, retailer.description);
             return StatusCode(HttpStatusCode.OK);

@@ -6,33 +6,29 @@ http://www.godatafeed.com/
 This demo attempts to demonstrate the following coding principles:
 1) Creating the WebSite from an Empty template
 2) Use WebApi routing variations to expose more methods in same controller
-3) Debugging - VStudio, JavaScript, Fiddler and SQL
+3) Debugging - VStudio, JavaScript, Fiddler, Knockout and SQL
+4) WebApi and MVC
+5) JavaScript Libraries:
+	Bootstrap
+	Modernizr
+	JQuery
+	JQueryUI
+	HandlebarsJS
+	AngularJS
 
-jquery plug-in
-jquery validation
-
-JQuery
-JQuery.UI
-	http://jqueryui.com/tabs/
-Modernizr
-	http://modernizr.com/
-	http://modernizr.com/docs/#features-css
+css media queries
+mobile and jquery mobile
+css 2/3
+html5
+jquery validations
 Google Analytics
 Elmah Exception Handling
 
 http://csharp-video-tutorials.blogspot.com/
 
-KnockoutJS
 AngularJS
 	http://www.toptal.com/angular-js/a-step-by-step-guide-to-your-first-angularjs-app
 
-handlebars.js is used to convert json to html
-
-<connectionStrings>
-	<add name="EmployeeContext"
-		connectionString="server=.; database=Sample; integrated security=SSPI"
-		providerName="System.Data.SqlClient" />
-</connectionStrings>
 
 Code First Migrations
 	http://msdn.microsoft.com/en-us/data/jj591621.aspx

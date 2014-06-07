@@ -95,7 +95,6 @@ namespace GoDataFeed.Dal
         {
             var entity = db.Products.Find(id);
             db.Products.Remove(entity);
-
             db.SaveChanges();
         }
 

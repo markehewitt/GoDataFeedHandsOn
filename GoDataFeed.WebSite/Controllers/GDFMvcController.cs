@@ -8,8 +8,6 @@ namespace GoDataFeed.WebSite.Controllers
 {
     public class GDFMvcController : Controller
     {
-        //
-        // GET: /GDFMvc/
         public ActionResult Default()
         {
             return View();

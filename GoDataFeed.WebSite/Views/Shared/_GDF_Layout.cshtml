@@ -15,18 +15,19 @@
 
     @Scripts.Render("~/Scripts/knockout-3.1.0.js")
     @Scripts.Render("~/Scripts/handlebars.js")
+    @Scripts.Render("~/Scripts/angular.js")
 
     @Scripts.Render("~/Scripts/GoDataFeed.js")
 
 </head>
-    <body>
-        <div class="gdf-banner">
-            <div class="pull-left hide-sm">
-                <img src="~/Images/GoDataFeed.png" alt="The best company in the world" />
-            </div>
+<body>
+    <div class="gdf-banner">
+        <div class="pull-left hide-sm">
+            <img src="~/Images/GoDataFeed.png" alt="The best company in the world" />
         </div>
-        <div class="mainbody-div">
-            @RenderBody() 
-        </div>   
-    </body>
+    </div>
+    <div class="mainbody-div">
+        @RenderBody()
+    </div>
+</body>
 </html>
