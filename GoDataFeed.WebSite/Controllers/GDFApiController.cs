@@ -29,20 +29,20 @@ namespace GoDataFeed.WebSite.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult AddRetailer(long id, string name, string description)
+        public IHttpActionResult AddRetailer([FromBody]Retailer retailer)  //string name, string description
         {
-            efSvc.AddRetailer(id, name, description);
+            efSvc.AddRetailer(retailer.name, retailer.description);
             return StatusCode(HttpStatusCode.OK);
         }
 
         [HttpPost]
-        public IHttpActionResult UpdateRetailer(long id, string name, string description)
+        public IHttpActionResult UpdateRetailer([FromBody]Retailer retailer)
         {
-            efSvc.UpdateRetailer(id, name, description);
+            efSvc.UpdateRetailer(retailer.id, retailer.name, retailer.description);
             return StatusCode(HttpStatusCode.OK);
         }
 
-        [HttpPost]
+        [HttpDelete]
         public IHttpActionResult DeleteRetailer(long id)
         {
             efSvc.DeleteRetailer(id);

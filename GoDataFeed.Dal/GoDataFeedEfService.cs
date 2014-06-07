@@ -21,11 +21,10 @@ namespace GoDataFeed.Dal
             return db.Retailers;
         }
 
-        public void AddRetailer(long id, string name, string description)
+        public void AddRetailer(string name, string description)
         {
             var retailer = new Retailer
             {
-                id = id,
                 name = name,
                 description = description
             };

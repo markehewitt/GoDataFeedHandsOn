@@ -1,10 +1,10 @@
-﻿Pull the list of Retailers via Entity Framework and WebAPI using handlebars.js
-
-<p><button class="button" onclick="javascript:CallEntityFramework()" name="Get Retailers">Get Retailers via Entity Framework</button></p>
-
-<div id="efResults">
-    hi all
+﻿<div class="alert alert-info">
+    Pull the list of Retailers via Entity Framework and WebAPI using handlebars.js
 </div>
+
+<p><button class="btn btn-default" onclick="javascript: ListRetailersWithHandlebars()">Get Retailers via Entity Framework</button></p>
+
+<div id="efResults"></div>
 
 <script id="retailers-table" type="text/x-handlebars-template">
     <table>
@@ -23,50 +23,112 @@
                 <td width="50px">{{id}}</td>
                 <td width="250px">{{name}}</td>
                 <td width="400px">{{description}}</td>
-                <td width="75px"><a href="#" class="edit-retailer" data-id="{{id}}">Edit</a></td>
-                <td width="75px"><a href="#" class="delete-retailer" data-id="{{id}}">Delete</a></td>
+                <td width="75px"><a href="#" class="edit-retailer btn btn-xs btn-success" data-id="{{id}}">Edit</a></td>
+                <td width="75px"><a href="#" class="delete-retailer btn btn-xs btn-danger" data-id="{{id}}">Delete</a></td>
             </tr>
             {{/each}}
             <tr>
-                <td colspan="5"><a href="#" class="add-retailer">Add</a></td>
+                <td colspan="5"><a href="#" class="add-retailer btn btn-xs btn-primary">Add</a></td>
             </tr>
         </tbody>
     </table>
-</script> 
+</script>
+
+<div id="dialog-add-form" title="Add Retailer">
+<form>
+    <table>
+        <tr>
+            <td>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="description">Description:</label>
+                <input type="text" name="description" id="description" class="text ui-widget-content ui-corner-all">
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
 
 <script type="text/javascript">
 
-    $(document).ready(function () {
-        $("#efResults").hide();
+$(document).ready(function () {
+    $("#efResults").hide();
 
+});
+
+$('body').on('click', '.edit-retailer', function () {
+    var link = $(this);
+    alert('edit' + link.data('id'));
+    //ListRetailersWithHandlebars();
+}).on('click', '.delete-retailer', function () {
+    var link = $(this);
+    var uri = '/api/GDFApi/DeleteRetailer/' + link.data('id');
+    $.ajax({
+        url: uri,
+        type: "DELETE",
+        success: function (data) {
+            ListRetailersWithHandlebars();
+        }
     });
+}).on('click', '.add-retailer', function () {
+    $('#dialog-add-form').dialog("open");
+});
 
-    $('body').on('click', '.edit-retailer', function () {
-        debugger;
-        var link = $(this);
-        alert('edit' + link.data('id'));
-    }).on('click', '.delete-retailer', function () {
-        var link = $(this);
-        alert('delete' + link.data('id'));
-    }).on('click', '.add-retailer', function () {
-        alert('add');
-    });
+$("#dialog-add-form").dialog({
+    autoOpen: false,
+    height: 200,
+    width: 340,
+    modal: true,
+    buttons: {
+        "Save": function () {
+            var $frm = $(this);
+            var retailerName = $frm.find('#name').val();
+            var retailerDescription = $frm.find('#description').val();
+            var uri = '/api/GDFApi/AddRetailer';
 
-    function CallEntityFramework() {
-        var uri = '/api/GDFApi/GetAllRetailers';
-        $.getJSON(uri).done(
-            function (data) { 
-                debugger;
-                var source = $("#retailers-table").html();
-                var template = Handlebars.compile(source);  // Compile HandleBar template
-                var html = template(data);  // Pass returned json data to handlebar template
-                $("#efResults").html(html);
-                $("#efResults").show("explode", 1500);
-            }
-            ).fail(
-                function (jqXHR, textStatus, err) {
-                    alert(err);
+            $.ajax({
+                url: uri,
+                type: "POST",
+                data: {
+                    name: retailerName,
+                    description: retailerDescription
+                },
+                success: function (data) {
+                    ListRetailersWithHandlebars();
                 }
-            );
+            });
+
+            // Call backend
+            $(this).dialog("close");
+        },
+        Cancel: function () {
+            $(this).dialog("close");
+        }
+    },
+    Cancel: function () {
+        $(this).dialog("close");
     }
+});
+
+function ListRetailersWithHandlebars() {
+    var uri = '/api/GDFApi/GetAllRetailers';
+    $.getJSON(uri).done(
+        function (data) {
+            debugger;
+            var source = $("#retailers-table").html();
+            var template = Handlebars.compile(source);  // Compile HandleBar template
+            var html = template(data);  // Pass returned json data to handlebar template
+            $("#efResults").html(html);
+            $("#efResults").show("explode", 1000);
+        }
+        ).fail(
+            function (jqXHR, textStatus, err) {
+                alert(err);
+            }
+        );
+}
 </script>

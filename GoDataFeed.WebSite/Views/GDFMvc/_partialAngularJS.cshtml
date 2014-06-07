@@ -1,0 +1,29 @@
+﻿
+<div class="alert alert-danger">
+    Pull the list of Retailers via Entity Framework and WebAPI and bind to a table using AngularJS
+</div>
+
+<p><button class="btn btn-default" onclick="javascript: ListRetailersWithAngularJS()">Get Retailers</button></p>
+
+<div id="angResults"></div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#angResults").hide();
+    });
+
+    function ListRetailersWithAngularJS() {
+        var uri = '/api/GDFApi/GetAllRetailers';
+        $.getJSON(uri).done(
+            function (data) {
+
+                $("#angResults").show("slide", 1000);
+            }
+            ).fail(
+                function (jqXHR, textStatus, err) {
+                    alert(err);
+                }
+            );
+    }
+</script>
