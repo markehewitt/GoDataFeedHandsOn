@@ -86,6 +86,7 @@ $('body').on('click', '.edit-retailer', function () {
     var uri = '/api/GDFApi/DeleteRetailer/' + link.data('id');
     $.ajax({
         url: uri,
+        cache: false,
         type: "DELETE",
         success: function (data) {
             ListRetailersWithHandlebars();
@@ -118,6 +119,7 @@ $("#dialog-addedit-form").dialog({
 
             $.ajax({
                 url: uri,
+                cache: false,
                 type: "POST",
                 data: {
                     id: retailerId,
@@ -129,17 +131,20 @@ $("#dialog-addedit-form").dialog({
                 }
             });
 
-            $(this).dialog("close");
+            closeDialog($(this));
         },
         Cancel: function () {
-            $(this).dialog("close");
+            closeDialog($(this));
         }
     },
     Cancel: function () {
-        $(this).dialog("close");
+        closeDialog($(this));
     }
 });
 
+function closeDialog(dlg) {
+    dlg.dialog("close");
+}
 
 function ListRetailersWithHandlebars() {
     var uri = '/api/GDFApi/GetAllRetailers';
