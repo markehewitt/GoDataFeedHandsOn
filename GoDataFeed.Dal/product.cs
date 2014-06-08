@@ -11,7 +11,7 @@ namespace GoDataFeed.Dal
     public class Product
     {
         public long id { get; set; }
-        public long retailer_id { get; set; }
+       // public long retailer_id { get; set; }
         public string name { get; set; }
         public string sku { get; set; }
         public decimal price { get; set; }

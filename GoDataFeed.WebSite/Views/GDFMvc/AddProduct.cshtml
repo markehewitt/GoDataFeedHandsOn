@@ -1,0 +1,44 @@
+﻿@model GoDataFeed.Dal.Retailer
+
+@{
+    ViewBag.Title = "Add Product";
+}
+
+<div>
+    <div class="alert alert-info">Add Product for Retailer: @Model.name</div>
+
+    <form action="/GDFMvc/AddProduct/@Model.id" id="AddProduct" method="POST">
+        <input type="hidden" id="retailer_id" name="retailer_id" value="@Model.id" />
+        <table>
+            <tr>
+                <td>
+                    <label for="name">Name:</label>
+                </td>
+                <td>
+                    <input type="text" id="name" name="name" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name">Sku:</label>
+                </td>
+                <td>
+                    <input type="text" id="sku" name="sku" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name">Price:</label>
+                </td>
+                <td>
+                    <input type="text" id="price" name="price" />
+                </td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <td><input type="submit" name="submit" value="Save" class="btn btn-default" /></td>
+                <td><a href="/GDFMvc/ManageProducts/@Model.id" class="btn btn-default">Cancel</a></td>
+            </tr>
+        </table>
+    </form>   
+</div>

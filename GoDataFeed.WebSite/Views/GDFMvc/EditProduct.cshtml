@@ -1,0 +1,43 @@
+﻿@model GoDataFeed.Dal.Product
+
+@{
+    ViewBag.Title = "Edit Product";
+}
+
+<div>
+    <div class="alert alert-info">Edit Product for Retailer: @ViewBag.RetailerName</div>
+
+    <form action="/GDFMvc/EditProduct/@Model.id?retailer_id=@ViewBag.RetailerId" id="EditProduct" method="POST">
+        <table>
+            <tr>
+                <td>
+                    <label for="name">Name:</label>
+                </td>
+                <td>
+                    <input type="text" id="name" name="name" value="@Model.name" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name">Sku:</label>
+                </td>
+                <td>
+                    <input type="text" id="sku" name="sku" value="@Model.sku" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name">Price:</label>
+                </td>
+                <td>
+                    <input type="text" id="price" name="price" value="@Model.price" />
+                </td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <td><input type="submit" name="submit" value="Save" class="btn btn-default" /></td>
+                <td><a href="/GDFMvc/ManageProducts/@ViewBag.RetailerId" class="btn btn-default">Cancel</a></td>
+            </tr>
+        </table>
+    </form>
+</div>

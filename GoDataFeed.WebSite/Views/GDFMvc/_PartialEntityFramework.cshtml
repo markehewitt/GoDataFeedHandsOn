@@ -2,7 +2,7 @@
     Pull the list of Retailers via Entity Framework and WebAPI using handlebars.js
 </div>
 
-<p><button class="btn btn-default" onclick="javascript: ListRetailersWithHandlebars()">Get Retailers via Entity Framework</button></p>
+@*<p><button class="btn btn-default" onclick="javascript: ListRetailersWithHandlebars()">Get Retailers via Entity Framework</button></p>*@
 
 <div id="efResults"></div>
 
@@ -15,6 +15,7 @@
                 <th width="400px" align="left">Description</th>
                 <th width="75px" align="left">Edit</th>
                 <th width="75px" align="left">Delete</th>
+                <th width="150px" align="left">Manage Products</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
                 <td class="retailerDescription" width="400px">{{description}}</td>
                 <td width="75px"><a href="#" class="edit-retailer btn btn-xs btn-success" data-id="{{id}}">Edit</a></td>
                 <td width="75px"><a href="#" class="delete-retailer btn btn-xs btn-danger" data-id="{{id}}">Delete</a></td>
+                <td width="150px"><a href="#" class="manage-retailer-products btn btn-xs btn-info" data-id="{{id}}">Manage Products</a></td>
             </tr>
             {{/each}}
             <tr>
@@ -38,6 +40,7 @@
 
     $(document).ready(function () {
         $("#efResults").hide();
+        ListRetailersWithHandlebars()
     });
 
     $('body').on('click', '.edit-retailer', function () {
@@ -50,7 +53,7 @@
             function (data) {
 
                 createDialog('/api/GDFApi/UpdateRetailer', 'Edit Retailer');
-                
+
                 var $frm = $('#dialog-addedit-form');  // Update dialog with existing values
                 $frm.find('#id').attr('value', id);
                 $frm.find('#name').attr('value', data.name);
@@ -78,6 +81,17 @@
 
         createDialog('/api/GDFApi/AddRetailer', 'Add Retailer');
         $('#dialog-addedit-form').dialog("open");
+
+    }).on('click', '.manage-retailer-products', function () {
+
+        var uri = '/GDFMvc/ManageProducts/' + $(this).data('id');
+        $.get(uri).done(function (data) {
+            $("html").html(data);
+        }).fail(
+                function (jqXHR, textStatus, err) {
+                    alert(err);
+                }
+            );
 
     });
 

@@ -1,0 +1,40 @@
+﻿@model GoDataFeed.Dal.Retailer
+
+@{
+    ViewBag.Title = "Manage Products";
+}
+
+<div>
+    <div class="alert alert-info">Manage Products for Retailer: @Model.name</div>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="50px" align="left">Id</th>
+                <th width="250px" align="left">Name</th>
+                <th width="200px" align="left">Sku</th>
+                <th width="100px" align="left">Price</th>
+                <th width="75px" align="left">Edit</th>
+                <th width="75px" align="left">Delete</th>
+            </tr>
+        </thead>
+        @foreach(var product in Model.Products)
+        {
+            <tr>
+                <td width ="50px">@product.id</td>
+                <td width="250px">@product.name</td>
+                <td width="200px">@product.sku</td>
+                <td width="100px">@product.price</td>
+                <td width="75px"><a href="/GDFMvc/EditProduct/@product.id?retailer_id=@Model.id" class="edit-retailer btn btn-xs btn-success" data-id="{{id}}">Edit</a></td>
+                <td width="75px"><a href="/GDFMvc/DeleteProduct/@product.id?retailer_id=@Model.id" class="delete-retailer btn btn-xs btn-danger" data-id="{{id}}">Delete</a></td>
+            </tr>    
+        }
+        <tr>
+            <td colspan="6"><a href="/GDFMvc/AddProduct/@Model.id" class="add-retailer btn btn-xs btn-primary">Add</a></td>
+        </tr>
+    </table>
+    <br/>
+    <p>
+        <a href="/" class="btn btn-default">Go Back to Manage Retailers</a>
+    </p>
+</div>

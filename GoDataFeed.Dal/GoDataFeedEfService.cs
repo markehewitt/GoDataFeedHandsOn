@@ -46,11 +46,9 @@ namespace GoDataFeed.Dal
         public void DeleteRetailer(long id)
         {
             // Delete any referenced products first, then delete the retailer
-            var products = db.Products.Where<Product>(p => p.retailer_id == id).AsEnumerable<Product>();
-            db.Products.RemoveRange(products);
-
-            var entity = db.Retailers.Find(id);
-            db.Retailers.Remove(entity);
+            var retailer = GetRetailer(id);
+            retailer.Products.ToList<Product>().ForEach(p => DeleteProduct(p.id, retailer.id));
+            db.Retailers.Remove(retailer);
 
             db.SaveChanges();
         }
@@ -65,22 +63,24 @@ namespace GoDataFeed.Dal
             return db.Products;
         }
 
-        public void AddProduct(long id, long retailer_id, string name, string sku, decimal price)
+        public Retailer AddProduct(long retailer_id, string name, string sku, decimal price)
         {
+            // Note the retailer_id is implies by the FKEY relationship
             var product = new Product
             {
-                id = id,
-                retailer_id = retailer_id,
                 name = name,
                 sku = sku,
                 price = price
             };
 
-            db.Products.Add(product);
+            var retailer = GetRetailer(retailer_id);
+            retailer.Products.Add(product);
             db.SaveChanges();
+
+            return (retailer);
         }
 
-        public void UpdateProduct(long id, long retailer_id, string name, string sku, decimal price)
+        public Retailer UpdateProduct(long id, long retailer_id, string name, string sku, decimal price)
         {
             var entity = db.Products.Find(id);
             var entry = db.Entry<Product>(entity);
@@ -89,13 +89,17 @@ namespace GoDataFeed.Dal
             entity.price = price;
             entry.State = EntityState.Modified;
             db.SaveChanges();
+
+            return (GetRetailer(retailer_id));
         }
 
-        public void DeleteProduct(long id)
+        public Retailer DeleteProduct(long productId, long retailer_id)
         {
-            var entity = db.Products.Find(id);
+            var entity = db.Products.Find(productId);
             db.Products.Remove(entity);
             db.SaveChanges();
+
+            return (GetRetailer(retailer_id));
         }
 
     }
