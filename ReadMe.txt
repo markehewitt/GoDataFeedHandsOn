@@ -13,42 +13,14 @@ This demo attempts to demonstrate the following coding principles:
 	Modernizr
 	JQuery
 	JQueryUI
+	JQuery Validation
+	KnockoutJS
 	HandlebarsJS
 	AngularJS
-
-css media queries
-mobile and jquery mobile
-css 2/3
-html5
-jquery validations
-Google Analytics
-Elmah Exception Handling
-
-http://csharp-video-tutorials.blogspot.com/
-
-AngularJS
-	http://www.toptal.com/angular-js/a-step-by-step-guide-to-your-first-angularjs-app
-
-
-Code First Migrations
-	http://msdn.microsoft.com/en-us/data/jj591621.aspx
-
-Handlebar.js with Mustache? - it uses tile templates.
-	http://www.slideshare.net/DanWahlin/building-the-an-endtoend-aspnet-mvc-4-entity-framework-html5-jquery-application
-
-what are application templates
-
-Bootstrap 3+
-Media Queries
-
-CSS 2/3
-HTML5
-
-Git (no SVN)
-Unit Testing
-
-Data Format
-
+6) Both JQUery and MVC based editing
+7) Both Dapper and Entity FW
+	
+---------------------------------------------------------
 
 Here is the position description:
 Front End:
@@ -93,3 +65,39 @@ Expected During Demo
 ·        Walkthrough of the code explaining what is being done in each layer
 ·        Run through the code in debug mode, showing and stepping through the code of each layer
 ·        Modify the code ad-hock, having it perform something slightly different after the initial demo
+
+---------------------------------------------------------------
+
+css media queries
+mobile and jquery mobile
+css 2/3
+html5
+jquery validations
+Google Analytics
+Elmah Exception Handling
+i18n
+
+http://csharp-video-tutorials.blogspot.com/
+
+AngularJS
+	http://www.toptal.com/angular-js/a-step-by-step-guide-to-your-first-angularjs-app
+
+
+Code First Migrations
+	http://msdn.microsoft.com/en-us/data/jj591621.aspx
+
+Handlebar.js with Mustache? - it uses tile templates.
+	http://www.slideshare.net/DanWahlin/building-the-an-endtoend-aspnet-mvc-4-entity-framework-html5-jquery-application
+
+what are application templates
+
+Bootstrap 3+
+Media Queries
+
+CSS 2/3
+HTML5
+
+Git (no SVN)
+Unit Testing
+
+Data Format
