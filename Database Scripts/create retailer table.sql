@@ -1,7 +1,8 @@
+
 USE [GoDataFeed]
 GO
 
-/****** Object:  Table [dbo].[retailer]    Script Date: 6/4/2014 12:07:00 AM ******/
+/****** Object:  Table [dbo].[retailer]    Script Date: 6/7/2014 7:08:29 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,6 +12,7 @@ GO
 CREATE TABLE [dbo].[retailer](
 	[id] [bigint] IDENTITY(1,1) NOT NULL,
 	[name] [nvarchar](50) NOT NULL,
+	[description] [nvarchar](100) NULL,
  CONSTRAINT [PK_retailer] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC

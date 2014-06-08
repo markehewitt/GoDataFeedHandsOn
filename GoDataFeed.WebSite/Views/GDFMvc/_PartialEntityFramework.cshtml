@@ -20,9 +20,9 @@
         <tbody>
             {{#each this}}
             <tr>
-                <td width="50px">{{id}}</td>
-                <td width="250px">{{name}}</td>
-                <td width="400px">{{description}}</td>
+                <td class="retailerId" width="50px">{{id}}</td>
+                <td class="retailerName" width="250px">{{name}}</td>
+                <td class="retailerDescription" width="400px">{{description}}</td>
                 <td width="75px"><a href="#" class="edit-retailer btn btn-xs btn-success" data-id="{{id}}">Edit</a></td>
                 <td width="75px"><a href="#" class="delete-retailer btn btn-xs btn-danger" data-id="{{id}}">Delete</a></td>
             </tr>
@@ -34,37 +34,54 @@
     </table>
 </script>
 
-<div id="dialog-add-form" title="Add Retailer">
-<form>
-    <table>
-        <tr>
-            <td>
-                <label for="name">Name:</label>
-                <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="description">Description:</label>
-                <input type="text" name="description" id="description" class="text ui-widget-content ui-corner-all">
-            </td>
-        </tr>
-    </table>
-</form>
+<div id="dialog-addedit-form" title="tbd" data-uri="tbd">
+    <form>
+        <input type="hidden" id="id" name="id" />
+        <table>
+            <tr>
+                <td>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" id="description" class="text ui-widget-content ui-corner-all">
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
 
 <script type="text/javascript">
 
 $(document).ready(function () {
     $("#efResults").hide();
-
 });
 
 $('body').on('click', '.edit-retailer', function () {
-    var link = $(this);
-    alert('edit' + link.data('id'));
-    //ListRetailersWithHandlebars();
+    debugger;
+    var id = $(this).data('id');  // Get the id from the edit button
+
+    // Since we have the id, call the backend to get existing data and populate dialog
+    var uri = '/api/GDFApi/GetRetailer/' + id;
+    $.getJSON(uri).done(
+        function (data) {
+
+            // Update dialog with edit url, hidden id and change text
+            var $frm = $('#dialog-addedit-form');
+            $frm.data('uri', '/api/GDFApi/UpdateRetailer');
+            $frm.attr('title', 'Edit Retailer')
+            $frm.find('#id').attr('value', id);
+
+            $frm.find('#name').attr('value', data.name);
+            $frm.find('#description').attr('value', data.description);
+            $frm.dialog("open");
+            ListRetailersWithHandlebars();
+        });
 }).on('click', '.delete-retailer', function () {
+
     var link = $(this);
     var uri = '/api/GDFApi/DeleteRetailer/' + link.data('id');
     $.ajax({
@@ -73,27 +90,37 @@ $('body').on('click', '.edit-retailer', function () {
         success: function (data) {
             ListRetailersWithHandlebars();
         }
+
     });
 }).on('click', '.add-retailer', function () {
-    $('#dialog-add-form').dialog("open");
+
+    debugger;
+    var $frm = $('#dialog-addedit-form');
+    $frm.data('uri', '/api/GDFApi/AddRetailer');
+    $frm.attr('title', 'Add Retailer')
+    $frm.dialog("open");
+
 });
 
-$("#dialog-add-form").dialog({
+$("#dialog-addedit-form").dialog({
     autoOpen: false,
     height: 200,
     width: 340,
     modal: true,
     buttons: {
         "Save": function () {
+
             var $frm = $(this);
+            var retailerId = $frm.find('#id').val();
             var retailerName = $frm.find('#name').val();
             var retailerDescription = $frm.find('#description').val();
-            var uri = '/api/GDFApi/AddRetailer';
+            var uri = $frm.data('uri');
 
             $.ajax({
                 url: uri,
                 type: "POST",
                 data: {
+                    id: retailerId,
                     name: retailerName,
                     description: retailerDescription
                 },
@@ -102,7 +129,6 @@ $("#dialog-add-form").dialog({
                 }
             });
 
-            // Call backend
             $(this).dialog("close");
         },
         Cancel: function () {
@@ -114,14 +140,16 @@ $("#dialog-add-form").dialog({
     }
 });
 
+
 function ListRetailersWithHandlebars() {
     var uri = '/api/GDFApi/GetAllRetailers';
     $.getJSON(uri).done(
         function (data) {
-            debugger;
             var source = $("#retailers-table").html();
+
             var template = Handlebars.compile(source);  // Compile HandleBar template
             var html = template(data);  // Pass returned json data to handlebar template
+
             $("#efResults").html(html);
             $("#efResults").show("explode", 1000);
         }

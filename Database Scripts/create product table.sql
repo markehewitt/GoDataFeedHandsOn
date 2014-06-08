@@ -1,7 +1,7 @@
 USE [GoDataFeed]
 GO
 
-/****** Object:  Table [dbo].[product]    Script Date: 6/4/2014 10:20:28 AM ******/
+/****** Object:  Table [dbo].[product]    Script Date: 6/7/2014 7:10:20 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,7 +10,7 @@ GO
 
 CREATE TABLE [dbo].[product](
 	[id] [bigint] IDENTITY(1,1) NOT NULL,
-	[retailerid] [bigint] NOT NULL,
+	[retailer_id] [bigint] NOT NULL,
 	[name] [nvarchar](50) NOT NULL,
 	[sku] [nvarchar](20) NOT NULL,
 	[price] [money] NOT NULL,
@@ -25,7 +25,7 @@ GO
 ALTER TABLE [dbo].[product] ADD  CONSTRAINT [DF_product_price]  DEFAULT ((0)) FOR [price]
 GO
 
-ALTER TABLE [dbo].[product]  WITH CHECK ADD  CONSTRAINT [FK_product_retailer] FOREIGN KEY([retailerid])
+ALTER TABLE [dbo].[product]  WITH CHECK ADD  CONSTRAINT [FK_product_retailer] FOREIGN KEY([retailer_id])
 REFERENCES [dbo].[retailer] ([id])
 GO
 
