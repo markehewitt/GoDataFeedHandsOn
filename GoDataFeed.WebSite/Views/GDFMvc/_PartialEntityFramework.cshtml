@@ -2,8 +2,6 @@
     Pull the list of Retailers via Entity Framework and WebAPI using handlebars.js
 </div>
 
-@*<p><button class="btn btn-default" onclick="javascript: ListRetailersWithHandlebars()">Get Retailers via Entity Framework</button></p>*@
-
 <div id="efResults"></div>
 
 <script id="retailers-table" type="text/x-handlebars-template">
@@ -13,6 +11,7 @@
                 <th width="50px" align="left">Id</th>
                 <th width="250px" align="left">Name</th>
                 <th width="400px" align="left">Description</th>
+                <th width="120px" align="left"># Products</th>
                 <th width="75px" align="left">Edit</th>
                 <th width="75px" align="left">Delete</th>
                 <th width="150px" align="left">Manage Products</th>
@@ -24,13 +23,14 @@
                 <td class="retailerId" width="50px">{{id}}</td>
                 <td class="retailerName" width="250px">{{name}}</td>
                 <td class="retailerDescription" width="400px">{{description}}</td>
+                <td width="120px">{{Products.length}}</td>
                 <td width="75px"><a href="#" class="edit-retailer btn btn-xs btn-success" data-id="{{id}}">Edit</a></td>
                 <td width="75px"><a href="#" class="delete-retailer btn btn-xs btn-danger" data-id="{{id}}">Delete</a></td>
                 <td width="150px"><a href="#" class="manage-retailer-products btn btn-xs btn-info" data-id="{{id}}">Manage Products</a></td>
             </tr>
             {{/each}}
             <tr>
-                <td colspan="5"><a href="#" class="add-retailer btn btn-xs btn-primary">Add</a></td>
+                <td colspan="6"><a href="#" class="add-retailer btn btn-xs btn-primary">Add</a></td>
             </tr>
         </tbody>
     </table>
@@ -97,7 +97,7 @@
 
     function createDialog(uri, title) {
 
-        var dialogForm = '<div id="dialog-addedit-form" title="' + title + '" data-uri="' + uri + '"><form><input type="hidden" id="id" name="id" /><table><tr><td><label for="name">Name:</label><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all"></td></tr><tr><td><label for="description">Description:</label><input type="text" name="description" id="description" class="text ui-widget-content ui-corner-all"></td></tr></table></form></div>';
+        var dialogForm = '<div id="dialog-addedit-form" title="' + title + '" data-uri="' + uri + '"><form><input type="hidden" id="id" name="id" /><table><tr><td><label for="name">Name:</label><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" required /></td></tr><tr><td><label for="description">Description:</label><input type="text" name="description" id="description" class="text ui-widget-content ui-corner-all" required/></td></tr></table></form></div>';
         $("body").append(dialogForm);
 
         $("#dialog-addedit-form").dialog({
@@ -107,28 +107,35 @@
             modal: true,
             buttons: {
                 "Save": function () {
+                    debugger;
+                    var $frm = $(this).find('form');
+                    $frm.validate();  // Jquery Validation
+                    if (!$frm.valid()) {
+                        $frm.showErrors();
+                    }
+                    else {
 
-                    var $frm = $(this);
-                    var retailerId = $frm.find('#id').val();
-                    var retailerName = $frm.find('#name').val();
-                    var retailerDescription = $frm.find('#description').val();
-                    var uri = $frm.data('uri');
+                        var retailerId = $frm.find('#id').val();
+                        var retailerName = $frm.find('#name').val();
+                        var retailerDescription = $frm.find('#description').val();
+                        var uri = $(this).data('uri');
 
-                    $.ajax({
-                        url: uri,
-                        cache: false,
-                        type: "POST",
-                        data: {
-                            id: retailerId,
-                            name: retailerName,
-                            description: retailerDescription
-                        },
-                        success: function (data) {
-                            ListRetailersWithHandlebars();
-                        }
-                    });
+                        $.ajax({
+                            url: uri,
+                            cache: false,
+                            type: "POST",
+                            data: {
+                                id: retailerId,
+                                name: retailerName,
+                                description: retailerDescription
+                            },
+                            success: function (data) {
+                                ListRetailersWithHandlebars();
+                            }
+                        });
 
-                    closeDialog($(this));
+                        closeDialog($(this));
+                    }
                 },
                 Cancel: function () {
                     closeDialog($(this));

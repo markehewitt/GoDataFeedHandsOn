@@ -10,6 +10,7 @@ namespace GoDataFeed.WebSite.App_Start
                 new ScriptBundle("~/bundles/jquery")
                     .Include("~/Scripts/jquery-{version}.js")
                     .Include("~/Scripts/jquery-ui-{version}.js")
+                    .Include("~/Scripts/jquery.validate.js")
                     );
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
