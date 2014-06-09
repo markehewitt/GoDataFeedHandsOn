@@ -7,7 +7,22 @@ using System.Threading.Tasks;
 
 namespace GoDataFeed.Dal
 {
-    public class GoDataFeedEfService
+    public interface IGoDataFeedEfService
+    {
+        Retailer GetRetailer(long id);
+        IQueryable<Retailer> GetAllRetailers();
+        void AddRetailer(string name, string description);
+        void UpdateRetailer(long id, string name, string description);
+        void DeleteRetailer(long id);
+        Product GetProduct(long id);
+        IQueryable<Product> GetAllProducts();
+        Retailer AddProduct(long retailer_id, string name, string sku, decimal price);
+        Retailer UpdateProduct(long id, long retailer_id, string name, string sku, decimal price);
+        Retailer DeleteProduct(long productId, long retailer_id);
+
+    }
+
+    public class GoDataFeedEfService : IGoDataFeedEfService
     {
         private GoDataFeedContext db = new GoDataFeedContext();
 

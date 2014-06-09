@@ -11,7 +11,13 @@ using Dapper;
 
 namespace GoDataFeed.Dal
 {
-    public class GoDataFeedDapperService
+    public interface IGoDataFeedDapperService
+    {
+        Retailer Get(long id);
+        IEnumerable<Retailer> GetAll();
+    }
+
+    public class GoDataFeedDapperService : IGoDataFeedDapperService
     {
         private readonly static string DbConn = "GoDataFeedDbConnection";
 

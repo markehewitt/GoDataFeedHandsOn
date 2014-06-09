@@ -11,8 +11,14 @@ namespace GoDataFeed.WebSite.Controllers
 {
     public class GDFApiController : ApiController
     {
-        private GoDataFeedEfService efSvc = new GoDataFeedEfService();
-        private GoDataFeedDapperService dapSvc = new GoDataFeedDapperService();
+        private IGoDataFeedEfService efSvc;
+        private IGoDataFeedDapperService dapSvc;
+
+        public GDFApiController()
+        {
+            dapSvc = Global.simpleInjectionContainer.GetInstance<IGoDataFeedDapperService>();
+            efSvc = Global.simpleInjectionContainer.GetInstance<IGoDataFeedEfService>();
+        }
 
         #region Entity Framework Calls
 

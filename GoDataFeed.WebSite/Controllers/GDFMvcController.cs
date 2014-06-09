@@ -10,7 +10,12 @@ namespace GoDataFeed.WebSite.Controllers
 {
     public class GDFMvcController : Controller
     {
-        private GoDataFeedEfService efSvc = new GoDataFeedEfService();
+        private IGoDataFeedEfService efSvc;
+
+        public GDFMvcController()
+        {
+            efSvc = Global.simpleInjectionContainer.GetInstance<IGoDataFeedEfService>();
+        }
 
         public ActionResult Default()
         {
