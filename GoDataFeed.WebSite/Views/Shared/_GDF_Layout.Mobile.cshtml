@@ -1,0 +1,38 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title Mobile</title>
+    @Styles.Render("~/Content/GDFStyles.css")
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/themes/base/jquery.ui.all.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")    
+    @Scripts.Render("~/Scripts/knockout-3.1.0.js")
+    @Scripts.Render("~/Scripts/handlebars.js")
+    @Scripts.Render("~/Scripts/angular.js")
+
+    @Scripts.Render("~/Scripts/jquery.mobile-1.4.2.js")
+    @Styles.Render("~/Content/jquery.mobile-1.4.2.css")
+
+    @Scripts.Render("~/Scripts/GoDataFeed.js")
+
+</head>
+<body>
+    <div class="gdf-banner">
+        <div class="pull-left hide-sm">
+            <a href="/">
+                <img src="~/Images/GoDataFeed.png" alt="The best company in the world" />
+            </a>
+        </div>
+    </div>
+    <div class="mainbody-div">
+        @RenderBody()
+    </div>
+</body>
+</html>
+
